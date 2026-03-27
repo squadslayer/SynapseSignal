@@ -1,0 +1,333 @@
+
+--- Page 1 ---
+ChatGPT gpt-5-3
+👤 DEV 3 — ADDITIONS (Route Selection + Green Corridor Orchestration |
+SynapseSignal)
+🔷 🔹  PART 1 — PHASE PLAN (ADDITIONS ONLY)
+🔹 PHASE A1 — ROUTE SELECTION ENGINE
+Goal: Select optimal route for emergency vehicle
+Tasks:
+Receive from Dev 2:
+multiple routes
+route metrics (time, congestion)
+Select:
+Consider:
+congestion
+reliability
+Deliverable:
+✔ Optimal Route Selection
+🔹 PHASE A2 — CORRIDOR GENERATION
+Goal: Convert route into signal control plan
+Tasks:
+Extract:
+sequence of intersectionstext
+best_route = argmin(estimated_time)
+Exported with AI Exporter 1 / 13
+--- Page 2 ---
+Map:
+route →  corridor
+Identify:
+affected intersections
+Deliverable:
+✔ Corridor Plan
+🔹 PHASE A3 — PREDICTIVE SIGNAL SCHEDULING
+Goal: Prepare intersections ahead of arrival
+Tasks:
+For each intersection in route:
+Use:
+emergency ETA
+Schedule:
+green phase before arrival
+Ensure:
+smooth progression
+Deliverable:
+✔ Predictive Signal Schedule
+🔹 PHASE A4 — DYNAMIC CORRIDOR UPDATE
+Goal: Adapt to real-time changes
+Tasks:
+Monitor:
+emergency position
+traffic changes
+Recompute:
+route (if needed)
+signal timing
+Deliverable:
+✔ Adaptive Corridor System
+Exported with AI Exporter 2 / 13
+--- Page 3 ---
+🔹 PHASE A5 — ROUTE VALIDATION (SUITABILITY CHECK)
+Goal: Ensure selected route remains optimal
+Tasks:
+Continuously evaluate:
+congestion changes
+Compare:
+current route vs alternatives
+Trigger:
+reroute if needed
+Deliverable:
+✔ Route Validation Engine
+🔹 PHASE A6 — GREEN CORRIDOR EXECUTION
+Goal: Apply real signal overrides
+Tasks:
+Activate:
+green signals along route
+Maintain:
+safe transitions
+Clear:
+conflicting flows
+Deliverable:
+✔ Corridor Execution Logic
+🔹 PHASE A7 — POST-PASSAGE RESTORATION
+Goal: Return system to normal
+Tasks:
+Detect:
+emergency vehicle passed
+Restore:
+Exported with AI Exporter 3 / 13
+--- Page 4 ---
+normal signal logic
+Rebalance traffic
+Deliverable:
+✔ Restoration System
+🔹 PHASE A8 — CORRIDOR OUTPUT API
+Goal: Provide data to Dev 4 & Dev 5
+Output format:
+Deliverable:
+✔ Corridor API
+🔷 🔹  PART 2 — MASTER PROMPTS (ADDITIONS ONLY)
+󾠮 MASTER PROMPT — ROUTE SELECTION ENGINE
+You are designing routing logic.
+Task:
+Select optimal route for emergency vehicle.
+Input:
+routes with metrics
+You must:
+Select route with:
+minimum estimated_time
+Consider congestion
+Output format:json
+{
+  "route": [...],
+  "active_corridor": [...],
+  "current_intersection": "...",
+  "eta_sequence": [...],
+  "status": "active/replanned"
+}
+Exported with AI Exporter 4 / 13
+--- Page 5 ---
+Constraints:
+Must be deterministic
+No arbitrary choice
+󾠯 MASTER PROMPT — CORRIDOR GENERATION
+You are building corridor logic.
+Task:
+Convert route into sequence of intersections.
+You must:
+Extract nodes
+Define corridor path
+Output format:
+Constraints:
+Must follow valid graph path
+󾠰 MASTER PROMPT — PREDICTIVE SIGNAL SCHEDULING
+You are designing timing logic.
+Task:
+Schedule signals based on ETA.
+You must:
+For each intersection:json
+{
+  "selected_route": "...",
+  "reason": "lowest_time"
+}
+json
+{
+  "corridor": ["I1", "I2", "I3"]
+}
+Exported with AI Exporter 5 / 13
+--- Page 6 ---
+compute arrival time
+schedule green
+Output format:
+Constraints:
+Must align with movement timing
+No unsafe transitions
+󾠱 MASTER PROMPT — DYNAMIC CORRIDOR UPDATE
+You are designing adaptive routing.
+Task:
+Update corridor in real-time.
+You must:
+Monitor:
+position
+congestion
+Trigger reroute if needed
+Output format:
+Constraints:
+Must avoid frequent oscillations
+Must be stablejson
+{
+  "intersection_id": "...",
+  "green_start": ...,
+  "green_duration": ...
+}
+json
+{
+  "updated_route": [...],
+  "reason": "congestion_change"
+}
+Exported with AI Exporter 6 / 13
+--- Page 7 ---
+󾠲 MASTER PROMPT — ROUTE VALIDATION
+You are validating route quality.
+Task:
+Check if current route is still optimal.
+You must:
+Compare:
+current vs alternatives
+Trigger reroute condition
+Output format:
+Constraints:
+Must be continuous evaluation
+No false switching
+󾠳 MASTER PROMPT — CORRIDOR EXECUTION
+You are controlling signals.
+Task:
+Activate green corridor.
+You must:
+Turn signals green in sequence
+Prevent conflicts
+Output format:json
+{
+  "is_optimal": true/false,
+  "better_route": "..."
+}
+json
+{
+  "intersection_id": "...",
+  "override": true,
+  "state": "GREEN"
+Exported with AI Exporter 7 / 13
+--- Page 8 ---
+Constraints:
+Must be safe
+Must follow schedule
+󾠴 MASTER PROMPT — RESTORATION SYSTEM
+You are restoring normal control.
+Task:
+Return system to normal after passage.
+You must:
+Detect passage completion
+Restore signal logic
+Output format:
+Constraints:
+Must be smooth transition
+No abrupt changes
+󾠵 MASTER PROMPT — CORRIDOR API
+You are exposing system state.
+Task:
+Provide corridor data to frontend.
+Output format:}
+json
+{
+  "intersection_id": "...",
+  "mode": "normal"
+}
+json
+{
+  "route": [...],
+Exported with AI Exporter 8 / 13
+--- Page 9 ---
+Constraints:
+Must be real-time
+Must be consistent
+🔷 🔹  PART 3 — GUIDED LEARNING (ADDITIONS ONLY)
+🔹 PHASE A1 — ROUTE SELECTION
+🧠 What You Learn
+You learn how systems choose optimal paths under constraints.
+⚙ What Happens
+Evaluate multiple routes
+Select best one
+🔍 Key Insight
+Shortest ≠  fastest
+🧱 Mental Model
+Routing is optimization, not distance minimization
+🔹 PHASE A2 — CORRIDOR GENERATION
+🧠 What You Learn
+You learn how paths become control plans.
+⚙ What Happens
+Convert route →  intersections  "active_corridor": [...],
+  "status": "active"
+}
+Exported with AI Exporter 9 / 13
+--- Page 10 ---
+🔍 Key Insight
+Control happens at intersections, not roads
+🧱 Mental Model
+Route →  control points
+🔹 PHASE A3 — PREDICTIVE SCHEDULING
+🧠 What You Learn
+You learn anticipatory control systems.
+⚙ What Happens
+Prepare signals before arrival
+🔍 Key Insight
+Reactive control is too late
+🧱 Mental Model
+Control must predict, not react
+🔹 PHASE A4 — DYNAMIC UPDATE
+🧠 What You Learn
+You learn adaptive systems under uncertainty.
+⚙ What Happens
+Adjust route dynamically
+🔍 Key Insight
+Traffic is non-static
+🧱 Mental Model
+Exported with AI Exporter 10 / 13
+--- Page 11 ---
+System must adapt continuously
+🔹 PHASE A5 — ROUTE VALIDATION
+🧠 What You Learn
+You learn continuous optimization.
+⚙ What Happens
+Validate route quality
+🔍 Key Insight
+Best decision now may not remain best
+🧱 Mental Model
+Optimization is ongoing
+🔹 PHASE A6 — CORRIDOR EXECUTION
+🧠 What You Learn
+You learn real-world actuation.
+⚙ What Happens
+Signals are overridden
+🔍 Key Insight
+Execution must be safe
+🧱 Mental Model
+Control = safe actuation
+🔹 PHASE A7 — RESTORATION
+🧠 What You Learn
+Exported with AI Exporter 11 / 13
+--- Page 12 ---
+You learn system recovery after override.
+⚙ What Happens
+Return to normal flow
+🔍 Key Insight
+Recovery is as important as execution
+🧱 Mental Model
+Override must be temporary
+🔹 PHASE A8 — CORRIDOR API
+🧠 What You Learn
+You learn how backend communicates complex state visually.
+⚙ What Happens
+Send route + corridor
+🔍 Key Insight
+Visualization depends on clean data
+🧱 Mental Model
+Backend defines what frontend can show
+🧠 FINAL INSIGHT
+These additions transform Dev 3 from a controller
+into a predictive, route-aware orchestration engine
+✔ Now supports:
+Green corridor system
+Route optimization
+Exported with AI Exporter 12 / 13
+--- Page 13 ---
+Real-time rerouting
+Map visualization integration
+Exported with AI Exporter 13 / 13

@@ -1,0 +1,841 @@
+
+--- Page 1 ---
+ChatGPT gpt-5-3
+👤 DEV 3 — PLAN (UPDATED: Flow-Aware + Hierarchical Control |
+SynapseSignal)
+🔷 ROLE
+Build the decision-making brain of SynapseSignal that:
+Uses lane-level + downstream-aware inputs (Dev 2)
+Combines:
+Intersection-level control (fast reaction)
+City-level strategy (global optimization)
+Implements:
+Flow-based signal selection (NEW CORE LOGIC)
+Sector-wise control
+Emergency override system
+🔷 PHASED EXECUTION PLAN (UPDATED)
+🔹 PHASE 1 — TRAFFIC STATE INGESTION
+Goal: Accept flow-aware input from Dev 2
+Tasks:
+Ingest:
+lanes (in_density, out_density, capacity)
+sectors
+emergency_state
+city_state
+Validate schema
+Deliverable:
+✔ Validated Flow-Aware Input
+Exported with AI Exporter 1 / 30
+--- Page 2 ---
+🔹 PHASE 2 — STATE MANAGEMENT ENGINE
+Goal: Maintain consistent system state
+Tasks:
+Store:
+current state
+previous state
+Handle:
+missing frames
+delayed inputs
+Deliverable:
+✔ Stateful Control Engine
+🔹 PHASE 3 — FLOW SCORE COMPUTATION (NEW CORE)
+Goal: Compute flow feasibility per lane
+Logic:
+Tasks:
+Compute for each lane
+Normalize scores
+Handle edge cases:
+capacity = 0
+out_density > capacity
+Deliverable:
+✔ Lane-Level Flow Scores
+🔹 PHASE 4 — SECTOR-WISE DECISION MODEL
+Goal: Aggregate lane decisions into sectors
+Tasks:text
+flow_score = in_density * (1 - (out_density / capacity))
+Exported with AI Exporter 2 / 30
+--- Page 3 ---
+Group lanes into sectors
+Compute:
+Rank sectors
+Deliverable:
+✔ Sector-Level Decision Scores
+🔹 PHASE 5 — EMERGENCY OVERRIDE SYSTEM
+Goal: Prioritize emergency vehicles
+Tasks:
+Detect emergency presence
+Override:
+all normal logic
+Create:
+green corridor
+Consider:
+emergency type priority
+Deliverable:
+✔ Emergency Override Module
+🔹 PHASE 6 — CITY-LEVEL STRATEGY INTEGRATION
+Goal: Incorporate global optimization
+Tasks:
+Receive:
+global_signal_strategy
+Adjust:
+sector priorities
+Merge with:
+local flow decisionstext
+sector_score = sum(flow_scores of lanes)
+Exported with AI Exporter 3 / 30
+--- Page 4 ---
+Priority Order:
+Deliverable:
+✔ Hybrid Decision Engine
+🔹 PHASE 7 — FINAL SIGNAL DECISION ENGINE
+Goal: Select which sector/lane gets green
+Logic:
+Tasks:
+Assign:
+GREEN to selected sector
+RED to others
+Ensure:
+no conflicts
+Deliverable:
+✔ Final Signal Decisions
+🔹 PHASE 8 — ADAPTIVE TIMING OPTIMIZATION
+Goal: Adjust duration dynamically
+Tasks:
+Compute:
+green time based on density
+Prevent:
+starvationtext
+Emergency > City Strategy > Local Flow Logic
+text
+if emergency:
+    override
+else:
+    select sector with highest sector_score
+Exported with AI Exporter 4 / 30
+--- Page 5 ---
+Adjust:
+cycle length
+Deliverable:
+✔ Dynamic Timing Controller
+🔹 PHASE 9 — MULTI-INTERSECTION COORDINATION
+Goal: Enable smooth traffic flow across city
+Tasks:
+Use:
+graph + city strategy
+Implement:
+green wave
+Synchronize:
+adjacent signals
+Deliverable:
+✔ Coordinated Network Control
+🔹 PHASE 10 — API + EXECUTION LAYER
+Goal: Send decisions to system
+Tasks:
+Output:
+signal states
+Send to:
+Dev 5 (storage)
+Dev 4 (dashboard)
+Output format:
+json
+{
+  "intersection_id": "...",
+  "selected_sector": "...",
+  "signals": [...]
+Exported with AI Exporter 5 / 30
+--- Page 6 ---
+Deliverable:
+✔ Control API
+🔹 PHASE 11 — FAILSAFE & SAFETY SYSTEM
+Goal: Ensure safe operation
+Tasks:
+Detect:
+missing data
+Apply:
+default signal cycle
+Prevent:
+unsafe states
+Deliverable:
+✔ Safety Module
+🔹 PHASE 12 — LOGGING & TRACEABILITY
+Goal: Ensure auditability
+Tasks:
+Log:
+inputs
+decisions
+reasons
+Enable:
+replay
+Deliverable:
+✔ Decision Logs
+🔷 DEV 3 SUCCESS CRITERIA (UPDATED)
+Flow-score based decision working}
+Exported with AI Exporter 6 / 30
+--- Page 7 ---
+Downstream-aware control implemented
+Sector-wise optimization active
+Emergency override fully reliable
+City-level strategy integrated
+Deterministic and safe signal decisions
+Adaptive timing improves throughput
+Multi-intersection coordination functional
+Robust API for system integration
+Full logging and traceability
+🧠 FINAL INSIGHT
+Dev 3 is no longer just controlling signals —
+it is optimizing traffic flow under constraints
+✔ Ready for:
+Dev 4 (Dashboard)
+Dev 5 (Data Layer)
+ChatGPT gpt-5-3
+👤 DEV 3 — MASTER PROMPTS (UPDATED: Flow-Aware Control Layer |
+SynapseSignal)
+󾠮 MASTER PROMPT — TRAFFIC STATE INGESTION
+You are a backend systems engineer.
+Task:
+Ingest and validate flow-aware traffic intelligence from Dev 2.
+Input:
+lanes (in_density, out_density, capacity)
+sectors
+Exported with AI Exporter 7 / 30
+--- Page 8 ---
+emergency_state
+city_state
+You must:
+Validate schema
+Normalize all numeric fields
+Reject malformed or incomplete inputs
+Output format:
+Constraints:
+No missing fields
+Must be real-time compatible
+󾠯 MASTER PROMPT — STATE MANAGEMENT ENGINE
+You are designing a real-time control system.
+Task:
+Maintain consistent state across time.
+You must:
+Store:
+current state
+previous state
+Handle:
+missing frames
+delayed updates
+Enforce valid transitionsjson
+{
+  "intersection_id": "...",
+  "timestamp": "...",
+  "lanes": [...],
+  "sectors": [...],
+  "emergency_state": {...},
+  "city_state": {...}
+}
+Exported with AI Exporter 8 / 30
+--- Page 9 ---
+Output format:
+Python implementation
+State transition rules
+Constraints:
+No race conditions
+Deterministic updates
+󾠰 MASTER PROMPT — FLOW SCORE COMPUTATION (CORE LOGIC)
+You are implementing flow optimization logic.
+Task:
+Compute flow score for each lane.
+You must compute:
+You must:
+Handle:
+division by zero
+overflow cases
+Normalize scores
+Output format:
+Constraints:
+Must use real inputs
+No arbitrary scalingtext
+flow_score = in_density * (1 - (out_density / capacity))
+json
+{
+  "lane_id": "...",
+  "flow_score": ...
+}
+Exported with AI Exporter 9 / 30
+--- Page 10 ---
+󾠱 MASTER PROMPT — SECTOR-WISE DECISION MODEL
+You are designing group-level control.
+Task:
+Aggregate lane scores into sector scores.
+You must compute:
+Output format:
+Constraints:
+All lanes must belong to a sector
+No missing mappings
+󾠲 MASTER PROMPT — EMERGENCY OVERRIDE SYSTEM
+You are implementing priority control.
+Task:
+Override normal logic when emergency detected.
+You must:
+Detect emergency
+Identify affected lanes
+Activate:
+green corridor
+Define duration
+Output format:text
+sector_score = sum(flow_scores of lanes in sector)
+json
+{
+  "sector_id": "...",
+  "sector_score": ...
+}
+json
+Exported with AI Exporter 10 / 30
+--- Page 11 ---
+Constraints:
+Must override all other logic
+Must revert safely
+󾠳 MASTER PROMPT — CITY-LEVEL STRATEGY INTEGRATION
+You are integrating global intelligence.
+Task:
+Merge city-level strategy with local flow logic.
+You must:
+Input:
+global_signal_strategy
+local sector scores
+Adjust priorities
+Priority rule:
+Output format:
+Final adjusted sector scores
+Conflict resolution logic
+Constraints:
+Deterministic
+No contradictory decisions
+󾠴 MASTER PROMPT — FINAL SIGNAL DECISION ENGINE
+You are building the control engine.{
+  "override_active": true,
+  "priority_sector": "...",
+  "duration": ...
+}
+text
+Emergency > City Strategy > Local Flow
+Exported with AI Exporter 11 / 30
+--- Page 12 ---
+Task:
+Select final sector and assign signals.
+Logic:
+Output format:
+Constraints:
+No conflicting greens
+Deterministic output
+󾠵 MASTER PROMPT — ADAPTIVE TIMING OPTIMIZATION
+You are optimizing signal durations.
+Task:
+Adjust green time dynamically.
+You must:
+Base on:
+density
+queue length
+Prevent starvation
+Output format:text
+if emergency:
+    override
+else:
+    select sector with highest sector_score
+json
+{
+  "intersection_id": "...",
+  "selected_sector": "...",
+  "signals": [
+    {"lane_id": "...", "state": "GREEN"},
+    {"lane_id": "...", "state": "RED"}
+  ]
+}
+Exported with AI Exporter 12 / 30
+--- Page 13 ---
+Constraints:
+Must be adaptive
+No static timing
+󾠶 MASTER PROMPT — MULTI-INTERSECTION COORDINATION
+You are designing network-level optimization.
+Task:
+Synchronize signals across intersections.
+You must:
+Use:
+graph structure
+Implement:
+green wave
+Align:
+signal timings
+Output format:
+Constraints:
+Must prevent downstream congestion
+No isolated decisions
+🔟 MASTER PROMPT — API DESIGN (OUTPUT)json
+{
+  "sector_id": "...",
+  "green_time": ...
+}
+json
+{
+  "intersections": [...],
+  "timing_offsets": [...],
+  "strategy": "green_wave"
+}
+Exported with AI Exporter 13 / 30
+--- Page 14 ---
+You are designing system interface.
+Task:
+Send decisions to frontend and database.
+Output format:
+Constraints:
+Must be low-latency
+Must be consistent
+󾠮󾠮  MASTER PROMPT — FAILSAFE SYSTEM
+You are designing safety mechanisms.
+Task:
+Handle failures safely.
+You must:
+Detect:
+missing data
+system errors
+Apply:
+default signal cycle
+Output format:json
+{
+  "intersection_id": "...",
+  "timestamp": "...",
+  "selected_sector": "...",
+  "signals": [...],
+  "timing": ...
+}
+json
+{
+  "fallback_active": true,
+  "reason": "...",
+  "mode": "default_cycle"
+Exported with AI Exporter 14 / 30
+--- Page 15 ---
+Constraints:
+No undefined state
+Safety prioritized
+󾠮󾠯  MASTER PROMPT — LOGGING & TRACEABILITY
+You are designing audit system.
+Task:
+Log all system decisions.
+You must log:
+input state
+computed scores
+final decision
+reason
+Output format:
+Constraints:
+No missing logs
+Must support replay
+🔷 DEV 3 MASTER PROMPT OUTCOME (UPDATED)
+Flow-based decision logic implemented
+Sector-wise optimization enabled
+Emergency override fully integrated}
+json
+{
+  "timestamp": "...",
+  "input": {...},
+  "flow_scores": [...],
+  "decision": {...},
+  "reason": "..."
+}
+Exported with AI Exporter 15 / 30
+--- Page 16 ---
+City-level strategy merged correctly
+Deterministic signal decision engine
+Adaptive timing system
+Multi-intersection coordination
+Robust API layer
+Fault-tolerant safety system
+Full audit and traceability
+✔ SynapseSignal Control Layer becomes
+👉 flow-aware, hierarchical, and production-grade
+ChatGPT gpt-5-3
+👤 DEV 3 — GUIDED LEARNING (UPDATED: Flow-Aware Control Layer |
+SynapseSignal)
+🔹 PHASE 1 — TRAFFIC STATE INGESTION
+🧠 What You Are Learning
+You are learning how to convert traffic intelligence into trusted control input.
+This phase teaches you that the control layer cannot act on raw data blindly.
+It must first verify that the incoming state is complete, valid, and usable.
+⚙ What Is Happening
+Dev 2 sends:
+lane-level data
+sector data
+emergency state
+city-level state
+Dev 3 must:
+receive it
+validate it
+Exported with AI Exporter 16 / 30
+--- Page 17 ---
+normalize it
+reject bad input
+Without this step, the controller may make unsafe signal decisions.
+🧪 Guided Prompt
+Run the Traffic State Ingestion prompt and inspect:
+required fields
+numeric ranges
+missing data handling
+internal normalized format
+🔍 What to Notice
+If capacity = 0 or missing, later formulas break
+If lanes are missing, sector scoring becomes invalid
+If emergency state is malformed, override logic may fail
+Schema validation is not optional in control systems
+🧱 Mental Model
+Input is not truth until validated
+The controller only acts on trusted state, not raw state.
+🔹 PHASE 2 — STATE MANAGEMENT ENGINE
+🧠 What You Are Learning
+You are learning how real-time systems maintain continuity over time.
+A traffic controller is not a one-frame system.
+It must remember the previous state to:
+compare changes
+prevent unstable switching
+recover from delayed inputs
+Exported with AI Exporter 17 / 30
+--- Page 18 ---
+⚙ What Is Happening
+The engine stores:
+current state
+previous state
+It must handle:
+skipped frames
+delayed updates
+temporary missing values
+This prevents the signal system from behaving erratically.
+🧪 Guided Prompt
+Run the State Management Engine prompt and inspect:
+state transitions
+previous/current comparisons
+missing frame logic
+🔍 What to Notice
+Without previous state, there is no temporal stability
+Sudden state jumps can produce bad phase transitions
+Real systems need continuity, not just latest input
+🧱 Mental Model
+The control engine is a state machine, not a calculator
+🔹 PHASE 3 — FLOW SCORE COMPUTATION (CORE LOGIC)
+🧠 What You Are Learning
+You are learning how to decide which lane should get green based on actual traffic flow feasibility.
+This is one of the most important phases.
+You are no longer asking:
+“Which lane is crowded?”
+Exported with AI Exporter 18 / 30
+--- Page 19 ---
+You are asking:
+“Which crowded lane can actually discharge traffic without causing downstream blockage?”
+That is the difference between density-based control and flow-aware control.
+⚙ What Is Happening
+For each lane, Dev 3 computes:
+Where:
+in_density = traffic waiting to move
+out_density = traffic already occupying the downstream path
+capacity = maximum safe downstream occupancy
+This formula rewards:
+high incoming demand
+low downstream blockage
+It penalizes:
+sending vehicles into already congested exits
+🧪 Guided Prompt
+Run the Flow Score Computation prompt and inspect:
+formula application
+normalization
+edge-case handling
+🔍 What to Notice
+High in_density alone is not enough
+If out_density is high, green may worsen congestion
+If capacity = 0, division handling must be safe
+Flow score transforms traffic state into control logictext
+flow_score = in_density * (1 - (out_density / capacity))
+Exported with AI Exporter 19 / 30
+--- Page 20 ---
+🧱 Mental Model
+Green should go where vehicles can move, not just where they are waiting
+🔹 PHASE 4 — SECTOR-WISE DECISION MODEL
+🧠 What You Are Learning
+You are learning how lane-level decisions are grouped into practical traffic signal phases.
+In the real world, controllers rarely activate one lane independently.
+They usually operate at the level of:
+North-South movement
+East-West movement
+turn groups
+That is why sector-level aggregation is needed.
+⚙ What Is Happening
+Each lane has a flow score.
+Now Dev 3 groups lanes into sectors and computes:
+This gives one score per sector.
+The system can then choose:
+the best movement group
+instead of only a single lane
+🧪 Guided Prompt
+Run the Sector-Wise Decision Model prompt and inspect:
+lane-to-sector mapping
+aggregated sector scores
+final sector rankingtext
+sector_score = sum(flow_scores of lanes in sector)
+Exported with AI Exporter 20 / 30
+--- Page 21 ---
+🔍 What to Notice
+Sector grouping simplifies actuation
+Wrong lane grouping leads to wrong sector choice
+Sector logic aligns system intelligence with real signal operation
+🧱 Mental Model
+Lanes measure traffic, sectors control traffic
+🔹 PHASE 5 — EMERGENCY OVERRIDE SYSTEM
+🧠 What You Are Learning
+You are learning priority-based override design.
+This phase teaches that some events are more important than normal optimization.
+Emergency vehicles are one such event.
+The system must break normal logic safely and intentionally.
+⚙ What Is Happening
+When emergency state is present:
+ignore normal congestion optimization
+identify the correct path
+assign green corridor
+keep other lanes controlled safely
+restore normal control after passage
+This is not a tweak.
+It is a full priority override layer.
+🧪 Guided Prompt
+Run the Emergency Override System prompt and inspect:
+trigger conditions
+selected lanes/sectors
+override duration
+Exported with AI Exporter 21 / 30
+--- Page 22 ---
+restoration logic
+🔍 What to Notice
+Override must be immediate
+Override must not create unsafe conflicts
+Restoration logic is as important as activation
+Emergency type may affect urgency and routing priority
+🧱 Mental Model
+Emergency logic temporarily supersedes optimization
+🔹 PHASE 6 — CITY-LEVEL STRATEGY INTEGRATION
+🧠 What You Are Learning
+You are learning hierarchical decision making.
+SynapseSignal is not only local.
+It also has a city-level intelligence layer.
+This means Dev 3 must combine:
+local fast decisions
+global coordinated strategy
+⚙ What Is Happening
+Dev 3 receives:
+local sector scores
+city-level strategy or recommendation
+Then it merges them using this hierarchy:
+This ensures:
+emergencies always wintext
+Emergency > City Strategy > Local Flow Logic
+Exported with AI Exporter 22 / 30
+--- Page 23 ---
+network-wide coordination influences intersections
+local logic still works when no higher-priority signal exists
+🧪 Guided Prompt
+Run the City-Level Strategy Integration prompt and inspect:
+conflict resolution
+priority ordering
+merged control logic
+🔍 What to Notice
+Local optimum may hurt city-wide performance
+Global strategy may ask one intersection to delay for network benefit
+Priority hierarchy prevents contradictory decisions
+🧱 Mental Model
+Local control reacts fast, global control thinks ahead
+🔹 PHASE 7 — FINAL SIGNAL DECISION ENGINE
+🧠 What You Are Learning
+You are learning how control logic becomes actual signal states.
+All prior phases prepare data.
+This phase produces the final executable action.
+⚙ What Is Happening
+Dev 3 now decides:
+which sector gets green
+which lanes get red
+when yellow is applied
+how conflicts are prevented
+Core logic:
+Exported with AI Exporter 23 / 30
+--- Page 24 ---
+This converts analytical outputs into traffic light commands.
+🧪 Guided Prompt
+Run the Final Signal Decision Engine prompt and inspect:
+selected sector
+assigned states
+conflict prevention rules
+🔍 What to Notice
+Determinism matters: same state should yield same output
+No two conflicting sectors can get green
+Decision output must be explicit and machine-executable
+🧱 Mental Model
+This is the actuator-facing brain of the system
+🔹 PHASE 8 — ADAPTIVE TIMING OPTIMIZATION
+🧠 What You Are Learning
+You are learning how long the selected sector should stay green.
+Choosing the correct sector is only half the problem.
+Choosing the correct duration is equally important.
+⚙ What Is Happening
+Dev 3 adjusts:
+green duration
+cycle length
+Based on:text
+if emergency:
+    override
+else:
+    select sector with highest sector_score
+Exported with AI Exporter 24 / 30
+--- Page 25 ---
+density
+queue length
+recent traffic behavior
+The system must avoid:
+too short a green, which wastes capacity
+too long a green, which starves others
+🧪 Guided Prompt
+Run the Adaptive Timing Optimization prompt and inspect:
+green time logic
+queue-based adjustments
+starvation prevention
+🔍 What to Notice
+Timing is resource allocation
+High queue may justify longer green
+Some minimum and maximum bounds are necessary
+Timing logic directly affects throughput and fairness
+🧱 Mental Model
+Green time is a controlled resource, not a fixed timer
+🔹 PHASE 9 — MULTI-INTERSECTION COORDINATION
+🧠 What You Are Learning
+You are learning how one intersection affects another.
+Traffic systems are networks, not isolated control points.
+A good local decision can still be harmful if it overloads the next intersection.
+⚙ What Is Happening
+Using the city graph and global strategy, Dev 3 coordinates:
+Exported with AI Exporter 25 / 30
+--- Page 26 ---
+timing offsets
+corridor progression
+green wave behavior
+This helps vehicles move through multiple intersections smoothly.
+🧪 Guided Prompt
+Run the Multi-Intersection Coordination prompt and inspect:
+timing offsets
+corridor scheduling
+green wave logic
+🔍 What to Notice
+Local improvement is not enough
+Downstream congestion can propagate backward
+Coordinated timing can reduce stop-start inefficiency
+🧱 Mental Model
+A city is a connected control system
+🔹 PHASE 10 — API DESIGN (OUTPUT)
+🧠 What You Are Learning
+You are learning how to expose decisions cleanly to the rest of the system.
+Dev 3 does not act alone.
+Its outputs are used by:
+Dev 4 dashboard
+Dev 5 storage layer
+any actuator/simulator layer
+So the output interface must be precise.
+⚙ What Is Happening
+Dev 3 creates a structured output containing:
+Exported with AI Exporter 26 / 30
+--- Page 27 ---
+intersection id
+timestamp
+selected sector
+signal states
+timing values
+This becomes the official control output contract.
+🧪 Guided Prompt
+Run the API Design (Output) prompt and inspect:
+output schema
+field consistency
+downstream compatibility
+🔍 What to Notice
+Bad API design breaks UI and storage integration
+Missing timestamps reduce traceability
+Output must be stable across control cycles
+🧱 Mental Model
+API is the language the control layer speaks to the rest of the system
+🔹 PHASE 11 — FAILSAFE SYSTEM
+🧠 What You Are Learning
+You are learning how safe systems behave when data or logic fails.
+A traffic controller cannot freeze or act unpredictably if inputs disappear.
+Failure handling must be designed in advance.
+⚙ What Is Happening
+When failure is detected:
+missing data
+broken state
+Exported with AI Exporter 27 / 30
+--- Page 28 ---
+invalid control output
+Dev 3 switches to:
+safe fallback
+default signal cycle
+constrained conservative behavior
+Safety takes priority over optimization.
+🧪 Guided Prompt
+Run the Failsafe System prompt and inspect:
+failure triggers
+fallback activation
+safe cycle definition
+🔍 What to Notice
+Optimization is optional under failure; safety is not
+Fallback should be simple, reliable, and predictable
+Undefined control state is unacceptable
+🧱 Mental Model
+When intelligence fails, safety must still work
+🔹 PHASE 12 — LOGGING & TRACEABILITY
+🧠 What You Are Learning
+You are learning observability, accountability, and replayability.
+A control system must explain:
+what input it got
+what it computed
+why it made a decision
+Without this, debugging and trust become impossible.
+Exported with AI Exporter 28 / 30
+--- Page 29 ---
+⚙ What Is Happening
+Dev 3 logs:
+input state
+computed lane scores
+sector scores
+final selected action
+reason for decision
+fallback status
+These logs are used by Dev 5 for persistence and by Dev 4 for system visibility.
+🧪 Guided Prompt
+Run the Logging & Traceability prompt and inspect:
+log schema
+decision reasoning fields
+replay usefulness
+🔍 What to Notice
+Logs are not just for debugging; they are part of system governance
+Missing logs create blind spots
+Decision reasons are as important as decision outputs
+🧱 Mental Model
+If a control system cannot explain itself, it cannot be trusted
+🔷 FINAL LEARNING OUTCOME
+You now understand:
+how traffic intelligence becomes control input
+how state is maintained across time
+how flow scores model feasible movement
+how sectors convert lane data into practical control units
+Exported with AI Exporter 29 / 30
+--- Page 30 ---
+how emergency override supersedes normal logic
+how city-level strategy influences local decisions
+how final signal commands are produced
+how timing is optimized dynamically
+how intersections are coordinated as a network
+how output APIs connect control to the rest of the stack
+how failsafe behavior protects the system
+how logs make the system observable and auditable
+🧠 FINAL INSIGHT
+Dev 3 is the layer where traffic understanding becomes action.
+It does not just respond to congestion — it decides how movement should be allowed,
+constrained, or prioritized.
+✔ Ready for Dev 4 (Frontend Dashboard Layer)
+Exported with AI Exporter 30 / 30

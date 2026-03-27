@@ -1,0 +1,252 @@
+
+--- Page 1 ---
+ChatGPT gpt-5-3
+🧠 SYNAPSESIGNAL — TEAM-LEVEL EXECUTION PLAN (Dev 1–5)
+🔷 1. EXECUTION MODEL (HOW TEAM WORKS)
+🧩 Structure
+You are running a modular, parallel + synchronized system build
+🔁 CORE WORKFLOW
+⚙ TEAM RULES (MANDATORY)
+Every module must expose:
+clear input/output schema
+No dev works in isolation:
+always integrate early
+Weekly:
+full pipeline test
+🔷 2. PHASE-WISE TEAM EXECUTIONtext
+Each Dev = Independent Module
+But
+All Devs = One Data Pipeline
+text
+Dev 1 → Dev 2 → Dev 3 → Dev 5 → Dev 4
+        ↑                 ↓
+        └──── feedback loop ────┘
+Exported with AI Exporter 1 / 11
+--- Page 2 ---
+🚀 PHASE 1 — FOUNDATION SETUP
+🎯 Goal
+Get environment + base pipeline ready
+👤 Dev Responsibilities
+Dev 1
+Setup YOLOv8
+Load dataset
+Basic detection working
+Dev 2
+Setup ByteTrack
+Build detection ingestion
+Dev 3
+Setup backend framework
+Define API contracts
+Dev 4
+Setup React + Leaflet
+Basic map renders
+Dev 5
+Setup:
+WSL
+PostgreSQL
+Redis
+Exported with AI Exporter 2 / 11
+--- Page 3 ---
+🔗 Integration Check
+Dev 1 →  Dev 2 data flow works
+🚀 PHASE 2 — CORE PIPELINE BUILD
+🎯 Goal
+Make basic system pipeline functional
+👤 Dev Responsibilities
+Dev 1
+Emergency vs non-emergency model
+Secondary classifier
+Dev 2
+Tracking (ByteTrack)
+Lane mapping
+Basic density
+Dev 3
+Basic signal logic
+No flow logic yet
+Dev 4
+Show intersections + signals
+Dev 5
+Create schema
+Basic inserts
+Exported with AI Exporter 3 / 11
+--- Page 4 ---
+🔗 Integration Check
+🚀 PHASE 3 — FLOW INTELLIGENCE (CRITICAL)
+🎯 Goal
+Introduce flow-aware system
+👤 Dev Responsibilities
+Dev 1
+Improve detection accuracy
+Dev 2
+Add:
+lane-level metrics
+downstream modeling
+sector grouping
+Dev 3
+Implement:
+Sector-based selection
+Dev 4
+Show:text
+Detection → Tracking → Signal → DB → UI
+text
+flow_score = in_density * (1 - out_density/capacity)
+Exported with AI Exporter 4 / 11
+--- Page 5 ---
+density
+sector info
+Dev 5
+Store:
+lane_metrics
+traffic_states
+🔗 Integration Check
+Flow-based signals working
+🚀 PHASE 4 — CITY + ROUTE INTELLIGENCE
+🎯 Goal
+Enable graph + routing system
+👤 Dev Responsibilities
+Dev 2
+Graph creation
+Route generation
+Geo mapping
+Dev 3
+Route selection
+Corridor planning
+Dev 4
+Show:
+routes
+Exported with AI Exporter 5 / 11
+--- Page 6 ---
+map overlays
+Dev 5
+Store:
+routes
+route_nodes
+🔗 Integration Check
+Route visible on map
+🚀 PHASE 5 — EMERGENCY CORRIDOR SYSTEM
+🎯 Goal
+Full emergency handling
+👤 Dev Responsibilities
+Dev 1
+Emergency classification stable
+Dev 2
+Emergency tracking (geo)
+Dev 3
+Corridor generation
+Predictive scheduling
+Override logic
+Dev 4
+Show:
+Exported with AI Exporter 6 / 11
+--- Page 7 ---
+moving vehicle
+corridor
+Dev 5
+Store:
+corridor logs
+emergency events
+🔗 Integration Check
+Emergency →  corridor works end-to-end
+🚀 PHASE 6 — REAL-TIME SYSTEM + SYNC
+🎯 Goal
+Make system real-time
+👤 Dev Responsibilities
+Dev 2
+Real-time state output
+Dev 3
+Continuous decision loop
+Dev 4
+WebSocket integration
+Dev 5
+Redis integration
+Dual-write system
+Exported with AI Exporter 7 / 11
+--- Page 8 ---
+🔗 Integration Check
+Live updates visible
+🚀 PHASE 7 — OPTIMIZATION + STABILITY
+🎯 Goal
+Make system robust
+👤 Dev Responsibilities
+Dev 1
+Model tuning
+Dev 2
+Tracking stability
+Dev 3
+Failsafe logic
+Timing optimization
+Dev 4
+UI optimization
+Dev 5
+Indexing
+query optimization
+🔗 Integration Check
+System stable under load
+Exported with AI Exporter 8 / 11
+--- Page 9 ---
+🔷 3. COLLABORATION MODEL
+🔹 DATA CONTRACT SYSTEM (CRITICAL)
+Each dev defines:
+🔹 WEEKLY INTEGRATION
+Every week:
+1. Run full pipeline
+2. Identify breaks
+3. Fix immediately
+🔹 VERSION CONTROL
+Use:
+Git
+Branch per dev
+🔹 COMMUNICATION
+Daily sync:
+what done
+blockers
+🔷 4. TEAM DEPENDENCY MAPjson
+{
+  "input": "...",
+  "output": "..."
+}
+text
+Exported with AI Exporter 9 / 11
+--- Page 10 ---
+🔷 5. EXECUTION STRATEGY
+🧠 PARALLEL + SYNC MODEL
+Setup →  parallel
+Core pipeline →  sequential
+Advanced features →  parallel
+🔥 PRIORITY ORDER
+1. Pipeline works
+2. Then optimize
+3. Then add features
+🔷 6. RISKS & MITIGATION
+⚠ Risk 1 — Poor Integration
+✔ Fix: strict schemas
+⚠ Risk 2 — Overengineering
+✔ Fix: build minimal first
+⚠ Risk 3 — Data mismatch
+✔ Fix: validation at every stepDev 1 → Dev 2 → Dev 3
+                 ↓
+              Dev 5
+                 ↓
+              Dev 4
+Exported with AI Exporter 10 / 11
+--- Page 11 ---
+⚠ Risk 4 — Real-time lag
+✔ Fix: Redis + optimized queries
+🔷 7. FINAL TEAM EXECUTION FLOW
+🧠 FINAL INSIGHT
+This project succeeds only if
+all devs think in terms of system, not modules
+🚀 FINAL RESULT
+✔ Fully coordinated team workflow
+✔ Clear responsibilities per phase
+✔ Continuous integration strategy
+✔ Scalable execution plan
+✔ Production-level system development pathtext
+Phase 1 → Setup
+Phase 2 → Pipeline
+Phase 3 → Flow Intelligence
+Phase 4 → Routing
+Phase 5 → Emergency System
+Phase 6 → Real-Time
+Phase 7 → Optimization
+Exported with AI Exporter 11 / 11

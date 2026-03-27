@@ -1,0 +1,549 @@
+
+--- Page 1 ---
+ChatGPT gpt-5-3
+👤 DEV 1 — PLAN (AI/Perception: SynapseSignal Perception Layer)
+🔷 ROLE
+Build the Perception Layer of SynapseSignal:
+Detect vehicles
+Identify emergency vehicles
+Classify emergency types
+Provide clean, structured outputs for downstream modules
+Dev 1 ensures:
+High detection accuracy
+Clean bounding boxes
+Reliable emergency identification
+Consistent output schema
+🔷 PHASED EXECUTION PLAN
+🔹 PHASE 1 — DATASET VALIDATION & PREPARATION
+Goal: Ensure dataset is clean and usable
+Tasks:
+Validate YOLO format
+Check:
+missing labels
+invalid annotations
+Ensure class mapping:
+vehicle
+emergency_vehicle
+Visualize dataset
+Exported with AI Exporter 1 / 21
+--- Page 2 ---
+Clean incorrect labels
+Deliverable:
+✔ Clean, validated dataset
+🔹 PHASE 2 — EMERGENCY DATA ENHANCEMENT
+Goal: Strengthen emergency vehicle representation
+Tasks:
+Ensure presence of:
+ambulance
+police
+fire truck
+Balance dataset
+Augment emergency samples
+Deliverable:
+✔ Balanced dataset with strong emergency coverage
+🔹 PHASE 3 — MODEL 1 (YOLOv8 DETECTOR) TRAINING
+Goal: Detect vehicles and emergency vehicles
+Tasks:
+Train YOLOv8:
+classes: vehicle, emergency_vehicle
+Tune:
+epochs
+batch size
+Validate:
+mAP
+precision/recall
+Deliverable:
+✔ Trained detection model
+🔹 PHASE 4 — MODEL 2 (EMERGENCY CLASSIFIER) DATASET
+Exported with AI Exporter 2 / 21
+--- Page 3 ---
+Goal: Prepare dataset for classification
+Tasks:
+Extract cropped images from:
+emergency_vehicle detections
+Label:
+ambulance
+police
+fire_truck
+Deliverable:
+✔ Classification dataset
+🔹 PHASE 5 — MODEL 2 TRAINING (CLASSIFIER)
+Goal: Classify emergency vehicle types
+Tasks:
+Train classifier (CNN / lightweight model)
+Evaluate:
+accuracy
+confusion matrix
+Deliverable:
+✔ Trained classifier model
+🔹 PHASE 6 — PIPELINE INTEGRATION (MODEL 1 + MODEL 2)
+Goal: Build 2-stage perception pipeline
+Tasks:
+Run YOLO detection
+Filter emergency_vehicle
+Crop bounding boxes
+Pass to classifier
+Merge outputs
+Deliverable:
+✔ Integrated perception pipeline
+Exported with AI Exporter 3 / 21
+--- Page 4 ---
+🔹 PHASE 7 — OUTPUT STANDARDIZATION
+Goal: Provide structured output for Dev 2
+Tasks:
+Define output schema:
+Deliverable:
+✔ Standardized detection output
+🔹 PHASE 8 — PERFORMANCE OPTIMIZATION
+Goal: Ensure real-time capability
+Tasks:
+Optimize:
+model size (YOLOv8n/s)
+inference speed
+Reduce latency
+Deliverable:
+✔ Real-time inference pipeline
+🔹 PHASE 9 — EDGE CASE HANDLING
+Goal: Improve robustness
+Tasks:json
+{
+  "frame_id": "...",
+  "objects": [
+    {
+      "id": "...",
+      "class": "vehicle/emergency_vehicle",
+      "type": "ambulance/police/fire/null",
+      "bbox": [...],
+      "confidence": ...
+    }
+  ]
+}
+Exported with AI Exporter 4 / 21
+--- Page 5 ---
+Handle:
+occlusion
+low light
+dense traffic
+Improve detection reliability
+Deliverable:
+✔ Robust perception system
+🔹 PHASE 10 — VALIDATION & HANDOFF
+Goal: Ensure readiness for Dev 2
+Tasks:
+Validate:
+detection accuracy
+emergency classification accuracy
+Test:
+sample videos
+Ensure:
+stable output format
+Deliverable:
+✔ Production-ready perception module
+🔷 DEV 1 SUCCESS CRITERIA
+Accurate vehicle detection
+Reliable emergency detection
+Correct emergency type classification
+Real-time inference achieved
+Clean and consistent output schema
+Robust performance under real conditions
+✔ Output ready for Dev 2 (Traffic Intelligence Layer)
+Exported with AI Exporter 5 / 21
+--- Page 6 ---
+ChatGPT gpt-5-3
+👤 DEV 1 — MASTER PROMPTS (Jupyter Notebook + Dataset Validation |
+SynapseSignal)
+󾠮 MASTER PROMPT — COMPLETE DATASET VALIDATION NOTEBOOK
+You are a computer vision engineer.
+Task:
+Generate a complete Jupyter Notebook to validate a YOLO dataset for SynapseSignal.
+You must include:
+1. Dataset Structure Check
+Verify:
+images/ and labels/ folders
+1:1 mapping
+Detect:
+missing labels
+orphan labels
+2. Label Format Validation
+Parse each .txt file
+Validate:
+5 values per line
+normalized coordinates (0–1)
+Detect:
+invalid class IDs
+malformed rows
+3. Class Distribution Analysis
+Count:
+Exported with AI Exporter 6 / 21
+--- Page 7 ---
+vehicle
+emergency_vehicle
+Plot distribution (matplotlib)
+4. Bounding Box Visualization
+Randomly sample images
+Draw bounding boxes
+Display class labels
+5. Error Reporting
+Print:
+missing files
+invalid labels
+summary stats
+Output Format:
+Clean notebook cells
+Modular Python functions
+No pseudo-code
+Constraints:
+Must run without modification
+No hardcoded paths
+Must handle large datasets
+󾠯 MASTER PROMPT — DATASET VISUALIZATION NOTEBOOK
+You are generating a dataset inspection notebook.
+Task:
+Create a Jupyter notebook to visualize YOLO annotations.
+You must include:
+Load random images
+Exported with AI Exporter 7 / 21
+--- Page 8 ---
+Convert YOLO →  pixel coordinates
+Draw bounding boxes using OpenCV
+Overlay class names
+Display multiple samples
+Output Format:
+Python notebook cells
+Reusable functions
+Constraints:
+No placeholder code
+Must work with any dataset
+󾠰 MASTER PROMPT — DATA CLEANING PIPELINE NOTEBOOK
+You are building a dataset cleaning system.
+Task:
+Generate a Jupyter notebook to clean YOLO dataset.
+You must:
+Remove:
+invalid label files
+malformed rows
+Fix:
+out-of-bound coordinates
+Log:
+all changes
+Output Format:
+Before vs after stats
+Cleaned dataset output
+Constraints:
+No silent deletions
+Exported with AI Exporter 8 / 21
+--- Page 9 ---
+Must preserve valid data
+󾠱 MASTER PROMPT — CLASS DISTRIBUTION & BALANCING NOTEBOOK
+You are analyzing dataset balance.
+Task:
+Generate notebook to compute and fix imbalance.
+You must:
+Count class instances
+Plot distribution
+Suggest:
+augmentation
+oversampling
+Output Format:
+Python code + plots
+Constraints:
+Must handle large datasets
+No hardcoded assumptions
+󾠲 MASTER PROMPT — DATA AUGMENTATION PIPELINE
+You are designing augmentation for detection models.
+Task:
+Generate notebook using Albumentations.
+You must include:
+Horizontal flip
+Brightness/contrast
+Blur
+Scaling
+Bounding box-safe transforms
+Exported with AI Exporter 9 / 21
+--- Page 10 ---
+Output Format:
+Python code
+YOLO bbox compatible
+Constraints:
+Must preserve label correctness
+No distortion of emergency features
+󾠳 MASTER PROMPT — YOLOv8 TRAINING NOTEBOOK
+You are training a detection model.
+Task:
+Generate full Jupyter notebook for YOLOv8 training.
+You must include:
+1. Install dependencies
+2. Load dataset (data.yaml)
+3. Train model:
+epochs
+batch size
+image size
+4. Save model
+5. Print training results
+Output Format:
+Executable notebook cells
+Constraints:
+Use Ultralytics API
+No deprecated code
+󾠴 MASTER PROMPT — EMERGENCY CLASSIFIER TRAINING NOTEBOOK
+You are training Model 2 (classifier).
+Exported with AI Exporter 10 / 21
+--- Page 11 ---
+Task:
+Generate notebook for emergency vehicle classification.
+You must include:
+Dataset loading (cropped images)
+Model (CNN / lightweight)
+Training loop
+Validation
+Accuracy + confusion matrix
+Output Format:
+PyTorch/TensorFlow notebook
+Constraints:
+Must be efficient
+No overcomplex model
+󾠵 MASTER PROMPT — INFERENCE PIPELINE NOTEBOOK
+You are building the full perception pipeline.
+Task:
+Generate notebook combining Model 1 + Model 2.
+You must:
+Load YOLO model
+Run detection
+Filter emergency_vehicle
+Crop bounding boxes
+Run classifier
+Merge outputs
+Output Format:
+json
+Exported with AI Exporter 11 / 21
+--- Page 12 ---
+Constraints:
+Must run in real-time
+Clean modular code
+󾠶 MASTER PROMPT — MODEL EVALUATION NOTEBOOK
+You are evaluating detection performance.
+Task:
+Generate evaluation notebook.
+You must compute:
+mAP@50
+mAP@50-95
+Precision
+Recall
+Output Format:
+Metrics + plots
+Constraints:
+Use YOLO built-in evaluation
+No incorrect calculations
+🔟 MASTER PROMPT — FAILURE ANALYSIS NOTEBOOK
+You are analyzing model weaknesses.
+Task:
+Identify failure cases.{
+  "class": "...",
+  "type": "...",
+  "bbox": [...],
+  "confidence": ...
+}
+Exported with AI Exporter 12 / 21
+--- Page 13 ---
+You must detect:
+False positives
+False negatives
+Misclassification
+Output Format:
+Categorized failures
+Root cause analysis
+Suggested fixes
+🔷 DEV 1 MASTER PROMPT OUTCOME
+Fully validated dataset
+Clean visualization tools
+Automated cleaning pipeline
+Balanced dataset
+Trained YOLO model
+Trained classifier
+Integrated inference pipeline
+Accurate evaluation metrics
+Identified failure cases
+✔ Perception layer becomes production-ready for SynapseSignal
+ChatGPT gpt-5-3
+👤 DEV 1 — GUIDED LEARNING (SynapseSignal Perception Layer: Dataset
+→ Dual-Model Pipeline)
+🔹 PHASE 1 — DATASET VALIDATION
+🧠 What You Are Learning
+You are learning how machines read data, not how humans see images.
+Exported with AI Exporter 13 / 21
+--- Page 14 ---
+⚙ What Is Happening
+YOLO reads:
+numbers (labels)
+normalized coordinates
+Not images directly
+Every .txt file = ground truth
+🧪 Guided Prompt
+Run Dataset Validation Notebook Prompt
+🔍 What to Notice
+Missing label →  model assumes background
+Wrong format →  training crash
+Invalid class ID →  undefined learning
+🧱 Mental Model
+Dataset = training truth →  if truth is wrong, model is wrong
+🔹 PHASE 2 — DATASET VISUALIZATION
+🧠 What You Are Learning
+You are learning how to “see what the model sees”.
+⚙ What Is Happening
+Convert normalized →  pixel coordinates
+Overlay bounding boxes
+🧪 Guided Prompt
+Run Visualization Notebook
+Exported with AI Exporter 14 / 21
+--- Page 15 ---
+🔍 What to Notice
+Tight vs loose boxes
+Missing annotations
+Wrong labels
+🧱 Mental Model
+Visualization = debugging your dataset
+🔹 PHASE 3 — DATA CLEANING
+🧠 What You Are Learning
+You are learning data quality enforcement.
+⚙ What Is Happening
+Removing invalid annotations
+Fixing coordinate errors
+Logging all corrections
+🧪 Guided Prompt
+Run Data Cleaning Notebook
+🔍 What to Notice
+Small errors →  large training impact
+Clean data improves convergence
+🧱 Mental Model
+Garbage in →  garbage out
+🔹 PHASE 4 — CLASS DISTRIBUTION ANALYSIS
+🧠 What You Are Learning
+You are learning how bias forms in models.
+Exported with AI Exporter 15 / 21
+--- Page 16 ---
+⚙ What Is Happening
+Model sees more vehicles than emergency vehicles
+Learns dominant class
+🧪 Guided Prompt
+Run Distribution Notebook
+🔍 What to Notice
+If emergency <5% →  ignored
+Balanced data improves recall
+🧱 Mental Model
+Frequency = importance for model
+🔹 PHASE 5 — DATA AUGMENTATION
+🧠 What You Are Learning
+You are learning how to simulate real-world variability.
+⚙ What Is Happening
+Apply transformations:
+lighting
+blur
+scale
+Increase dataset diversity
+🧪 Guided Prompt
+Run Augmentation Pipeline
+🔍 What to Notice
+Exported with AI Exporter 16 / 21
+--- Page 17 ---
+Improves robustness
+Prevents overfitting
+🧱 Mental Model
+Augmentation = artificial experience
+🔹 PHASE 6 — MODEL 1 (YOLOv8 DETECTOR) TRAINING
+🧠 What You Are Learning
+You are learning object detection fundamentals.
+⚙ What Is Happening
+Model predicts:
+bounding box
+class
+Optimizes:
+localization + classification
+🧪 Guided Prompt
+Run YOLO Training Notebook
+🔍 What to Notice
+Loss decreasing
+mAP improving
+Overfitting signs
+🧱 Mental Model
+Detection = where + what
+🔹 PHASE 7 — MODEL 2 DATA PREPARATION
+🧠 What You Are Learning
+Exported with AI Exporter 17 / 21
+--- Page 18 ---
+You are learning feature specialization.
+⚙ What Is Happening
+Crop emergency_vehicle regions
+Create classification dataset
+🧪 Guided Prompt
+Generate cropped dataset
+🔍 What to Notice
+Quality of crops matters
+Clear features improve classification
+🧱 Mental Model
+Focus on relevant regions only
+🔹 PHASE 8 — MODEL 2 (CLASSIFIER) TRAINING
+🧠 What You Are Learning
+You are learning fine-grained classification.
+⚙ What Is Happening
+Model distinguishes:
+ambulance
+police
+fire
+🧪 Guided Prompt
+Run Classifier Training Notebook
+🔍 What to Notice
+Exported with AI Exporter 18 / 21
+--- Page 19 ---
+Confusion between classes
+Class imbalance issues
+🧱 Mental Model
+Classification = feature recognition
+🔹 PHASE 9 — PIPELINE INTEGRATION (MODEL 1 + MODEL 2)
+🧠 What You Are Learning
+You are learning multi-stage ML pipelines.
+⚙ What Is Happening
+Detect →  filter →  crop →  classify
+Combine outputs
+🧪 Guided Prompt
+Run Inference Pipeline Notebook
+🔍 What to Notice
+Latency increases
+Accuracy improves
+Modular design
+🧱 Mental Model
+Pipeline = chain of specialized models
+🔹 PHASE 10 — EVALUATION & FAILURE ANALYSIS
+🧠 What You Are Learning
+You are learning model debugging.
+⚙ What Is Happening
+Exported with AI Exporter 19 / 21
+--- Page 20 ---
+Identify:
+false positives
+false negatives
+Analyze causes
+🧪 Guided Prompt
+Run Evaluation + Failure Analysis
+🔍 What to Notice
+Occlusion errors
+Low-light failures
+Misclassification
+🧱 Mental Model
+Errors reveal model limitations
+🔷 FINAL LEARNING OUTCOME
+You now understand:
+How datasets drive model learning
+How to validate and clean data
+How object detection works
+Why class balance matters
+How augmentation improves robustness
+How to train YOLO effectively
+How to build a dual-model pipeline
+How to evaluate and debug models
+🧠 FINAL INSIGHT
+You are not just training a model —
+you are building the eyes of SynapseSignal
+Exported with AI Exporter 20 / 21
+--- Page 21 ---
+✔ Ready to move to Dev 2 (Traffic Intelligence Layer)
+Exported with AI Exporter 21 / 21
