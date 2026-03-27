@@ -1,0 +1,26 @@
+{
+  "intersection_id": "INT_001",
+  "timestamp": "2026-03-27T10:00:00Z",
+  "lanes": [
+    {
+      "lane_id": "NORTH_IN",
+      "flow_score": 0.64
+    },
+    {
+      "lane_id": "SOUTH_IN",
+      "flow_score": 0.74
+    },
+    {
+      "lane_id": "EAST_IN",
+      "flow_score": 0.30
+    },
+    {
+      "lane_id": "WEST_IN",
+      "flow_score": 0.34
+    }
+  ],
+  "emergency_state": {
+    "active": true,
+    "estimated_arrival_sec": 12.0
+  }
+}
