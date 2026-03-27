@@ -1,12 +1,23 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from backend.api import ingest, state, ws
+from backend.core.config import get_redis_client
 import json
-import redis
 
 app = FastAPI()
 
-# Initialize Redis for the main app endpoints
-r = redis.Redis(host="localhost", port=6379, decode_responses=True)
+# Configure CORS for Remote Hosting
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with your Vercel URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Initialize Redis from shared config
+r = get_redis_client()
+
 
 app.include_router(ingest.router)
 app.include_router(state.router)

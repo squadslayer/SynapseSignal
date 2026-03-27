@@ -85,7 +85,9 @@ function App() {
   const [connected, setConnected] = useState(false);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8000/api/v1/ws/state');
+    const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/api/v1/ws/state';
+    const ws = new WebSocket(wsUrl);
+
     ws.onopen = () => setConnected(true);
     ws.onclose = () => setConnected(false);
     ws.onmessage = (event) => setData(JSON.parse(event.data));

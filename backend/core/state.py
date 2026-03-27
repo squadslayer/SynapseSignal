@@ -1,10 +1,11 @@
-import redis
+from backend.core.config import get_redis_client
 import json
 import random
 from backend.core.decision import compute_signal, apply_emergency
 
-# Initialize Redis Client
-r = redis.Redis(host="localhost", port=6379, decode_responses=True)
+# Initialize Redis Client from shared config
+r = get_redis_client()
+
 
 async def update_state(data):
     lanes = data.get("lanes", [])

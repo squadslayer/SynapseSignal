@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+redis
+python-dotenv
+websockets
+typing-extensions
