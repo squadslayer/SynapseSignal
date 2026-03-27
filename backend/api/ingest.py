@@ -5,5 +5,5 @@ router = APIRouter()
 
 @router.post("/api/v1/ingest")
 async def ingest(data: dict):
-    state = update_state(data)
+    state = await update_state(data)
     return {"status": "ok", "updated": True}

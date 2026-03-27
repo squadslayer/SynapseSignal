@@ -1,13 +1,14 @@
+import redis
+import json
 from backend.core.decision import compute_signal, apply_emergency_override
 
-CURRENT_STATE = {}
+# Initialize Redis Client
+r = redis.Redis(host="localhost", port=6379, decode_responses=True)
 
-def update_state(data):
-    global CURRENT_STATE
-
+async def update_state(data):
     print("\n--- INCOMING DATA ---")
-    print(json.dumps(data, indent=2) if isinstance(data, dict) else data)
-
+    print("Writing to Redis...")
+    
     lanes = data.get("lanes", [])
     emergency = data.get("emergency_state", {})
 
@@ -17,8 +18,8 @@ def update_state(data):
     print("\n--- COMPUTED SIGNAL ---")
     print(signal)
 
-    # Canonical City Structure Refactor
-    CURRENT_STATE = {
+    # Canonical City Structure
+    city_state = {
         "timestamp": data.get("timestamp"),
         "intersections": [
             {
@@ -30,9 +31,16 @@ def update_state(data):
         "emergency": emergency
     }
     
-    return CURRENT_STATE
+    # Store in Redis
+    r.set("city_state", json.dumps(city_state))
+    
+    # Trigger WebSocket Broadcast
+    from backend.api.ws import manager
+    await manager.broadcast(city_state)
+    
+    return city_state
 
 def get_state():
-    return CURRENT_STATE
-
-import json # Needed for print
+    print("Reading from Redis...")
+    data = r.get("city_state")
+    return json.loads(data) if data else {}

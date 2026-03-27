@@ -1,10 +1,11 @@
 from fastapi import FastAPI
-from backend.api import ingest, state
+from backend.api import ingest, state, ws
 
 app = FastAPI()
 
 app.include_router(ingest.router)
 app.include_router(state.router)
+app.include_router(ws.router)
 
 if __name__ == "__main__":
     import uvicorn
