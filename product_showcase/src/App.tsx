@@ -107,9 +107,12 @@ function App() {
 
         <div className="system-status" style={{ display: 'flex', gap: '32px' }}>
           <div className="status-active">
-            <div className="status-pulse" />
-            <span className="pill" style={{ color: 'var(--secondary)' }}>Live Stream Active</span>
+            <div className={connected ? "status-pulse" : ""} style={{ background: connected ? "var(--secondary)" : "#ff716b" }} />
+            <span className="pill" style={{ color: connected ? "var(--secondary)" : "#ff716b" }}>
+              {connected ? 'Neural Link Active' : 'Neural Link Offline'}
+            </span>
           </div>
+
           <div style={{ display: 'flex', gap: '16px' }}>
              <span className="pill">Region: Delhi NCR</span>
              <span className="pill">Latency: {data?.metrics?.decision_latency || 8} ms</span>
