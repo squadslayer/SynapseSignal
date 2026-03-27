@@ -6,7 +6,6 @@ def update_state(data):
     global CURRENT_STATE
 
     print("\n--- INCOMING DATA ---")
-    # Using a subset for print readability if data is large
     print(json.dumps(data, indent=2) if isinstance(data, dict) else data)
 
     lanes = data.get("lanes", [])
@@ -18,9 +17,19 @@ def update_state(data):
     print("\n--- COMPUTED SIGNAL ---")
     print(signal)
 
-    data["signal"] = signal
-
-    CURRENT_STATE = data
+    # Canonical City Structure Refactor
+    CURRENT_STATE = {
+        "timestamp": data.get("timestamp"),
+        "intersections": [
+            {
+                "id": data.get("intersection_id"),
+                "lanes": lanes,
+                "signal": signal
+            }
+        ],
+        "emergency": emergency
+    }
+    
     return CURRENT_STATE
 
 def get_state():
