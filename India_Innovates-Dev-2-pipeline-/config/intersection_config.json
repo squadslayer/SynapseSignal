@@ -1,0 +1,120 @@
+{
+  "frame_interval": 240,
+  "fps": 30,
+  "image_width": 1600,
+  "image_height": 900,
+
+  "intersections": [
+    {
+      "intersection_id": "INT_001",
+      "name": "Main Junction",
+      "latitude": 21.1458,
+      "longitude": 79.0882,
+
+      "lanes": [
+        {
+          "lane_id": "NORTH_IN",
+          "direction": "NORTH",
+          "sector_id": "NORTH_SOUTH",
+          "roi_polygon": [[600, 0], [1000, 0], [900, 400], [700, 400]],
+          "downstream_lane": "SOUTH_OUT",
+          "capacity": 15
+        },
+        {
+          "lane_id": "SOUTH_IN",
+          "direction": "SOUTH",
+          "sector_id": "NORTH_SOUTH",
+          "roi_polygon": [[600, 500], [1000, 500], [1100, 900], [500, 900]],
+          "downstream_lane": "NORTH_OUT",
+          "capacity": 15
+        },
+        {
+          "lane_id": "EAST_IN",
+          "direction": "EAST",
+          "sector_id": "EAST_WEST",
+          "roi_polygon": [[1000, 200], [1600, 200], [1600, 700], [1000, 700]],
+          "downstream_lane": "WEST_OUT",
+          "capacity": 12
+        },
+        {
+          "lane_id": "WEST_IN",
+          "direction": "WEST",
+          "sector_id": "EAST_WEST",
+          "roi_polygon": [[0, 200], [600, 200], [600, 700], [0, 700]],
+          "downstream_lane": "EAST_OUT",
+          "capacity": 12
+        },
+        {
+          "lane_id": "NORTH_OUT",
+          "direction": "NORTH",
+          "sector_id": "NORTH_SOUTH",
+          "roi_polygon": [[400, 0], [600, 0], [600, 400], [400, 400]],
+          "downstream_lane": null,
+          "capacity": 15
+        },
+        {
+          "lane_id": "SOUTH_OUT",
+          "direction": "SOUTH",
+          "sector_id": "NORTH_SOUTH",
+          "roi_polygon": [[1000, 500], [1200, 500], [1200, 900], [1000, 900]],
+          "downstream_lane": null,
+          "capacity": 15
+        },
+        {
+          "lane_id": "EAST_OUT",
+          "direction": "EAST",
+          "sector_id": "EAST_WEST",
+          "roi_polygon": [[1000, 700], [1600, 700], [1600, 900], [1000, 900]],
+          "downstream_lane": null,
+          "capacity": 12
+        },
+        {
+          "lane_id": "WEST_OUT",
+          "direction": "WEST",
+          "sector_id": "EAST_WEST",
+          "roi_polygon": [[0, 0], [400, 0], [400, 200], [0, 200]],
+          "downstream_lane": null,
+          "capacity": 12
+        }
+      ],
+
+      "sectors": [
+        {
+          "sector_id": "NORTH_SOUTH",
+          "lanes": ["NORTH_IN", "SOUTH_IN", "NORTH_OUT", "SOUTH_OUT"]
+        },
+        {
+          "sector_id": "EAST_WEST",
+          "lanes": ["EAST_IN", "WEST_IN", "EAST_OUT", "WEST_OUT"]
+        }
+      ]
+    }
+  ],
+
+  "roads": [
+    {
+      "road_id": "R001",
+      "from_intersection": "INT_001",
+      "to_intersection": "INT_002",
+      "distance": 500
+    },
+    {
+      "road_id": "R002",
+      "from_intersection": "INT_001",
+      "to_intersection": "INT_003",
+      "distance": 350
+    },
+    {
+      "road_id": "R003",
+      "from_intersection": "INT_002",
+      "to_intersection": "INT_003",
+      "distance": 400
+    }
+  ],
+
+  "all_intersections_geo": {
+    "INT_001": {"name": "Main Junction",    "latitude": 21.1458, "longitude": 79.0882},
+    "INT_002": {"name": "North Square",     "latitude": 21.1505, "longitude": 79.0882},
+    "INT_003": {"name": "East Cross",       "latitude": 21.1458, "longitude": 79.0935}
+  }
+}

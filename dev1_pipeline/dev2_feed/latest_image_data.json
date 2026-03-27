@@ -1,0 +1,161 @@
+{
+  "timestamp": 1774280454.1098087,
+  "normal_count": 13,
+  "emergency_count": 1,
+  "details": [
+    {
+      "type": "emergency_vehicle",
+      "subtype": "ambulance",
+      "bbox": [
+        448,
+        341,
+        1040,
+        773
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        0,
+        0,
+        224,
+        144
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        400,
+        0,
+        768,
+        90
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "minivan",
+      "bbox": [
+        992,
+        9,
+        1584,
+        378
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        1408,
+        90,
+        1600,
+        378
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        80,
+        422,
+        544,
+        746
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        576,
+        233,
+        992,
+        539
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        1024,
+        233,
+        1472,
+        530
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "suv",
+      "bbox": [
+        927,
+        387,
+        1488,
+        773
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        0,
+        674,
+        416,
+        900
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        400,
+        720,
+        880,
+        900
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        880,
+        657,
+        1440,
+        900
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "car",
+      "bbox": [
+        1392,
+        485,
+        1600,
+        809
+      ],
+      "confidence": 0.99
+    },
+    {
+      "type": "normal_vehicle",
+      "subtype": "motorcycle",
+      "bbox": [
+        1056,
+        630,
+        1584,
+        900
+      ],
+      "confidence": 0.99
+    }
+  ]
+}

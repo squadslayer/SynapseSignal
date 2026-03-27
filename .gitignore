@@ -1,41 +1,22 @@
-# --- Environments & Secrets ---
-.env
-.env.*
-.venv
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
 venv/
 env/
+.env
 
-# --- Python ---
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.pytest_cache/
-.coverage
-htmlcov/
+# Node.js
+node_modules/
+dist/
+build/
+.npm
+package-lock.json
 
-# --- Project Specific Outputs (Dev 1 & 2) ---
-*.json
-# Keep configuration files
-!requirements.txt
-!package.json
-!schema.sql
-!*.ipynb
-!test_rf.json
-
-# --- Datasets & Large Metadata ---
-*.zip
-*.tar.gz
-*_extracted/
-input_source/
-dev1_output/
-video_snapshots/
-
-# --- IDE & Tools ---
-.qodo/
+# IDE
 .vscode/
 .idea/
-.ipynb_checkpoints/
-logs/
-cache/
-context/
+
+# System
+.DS_Store
+Thumbs.db
