@@ -26,7 +26,7 @@ def run_simulation():
         if not emergency_active and random.random() < 0.05:
             emergency_active = True
             emergency_timer = 30
-            print("🚑 DELHI EMERGENCY: AMB_007 NEAR AIIMS!")
+            print("--- DELHI EMERGENCY: AMB_007 NEAR AIIMS! ---")
 
         emergency_state = {
             "active": emergency_active,
@@ -59,7 +59,7 @@ def run_simulation():
             emergency_timer -= 2
             if emergency_timer <= 0:
                 emergency_active = False
-                print("🏁 Emergency cleared.")
+                print("--- Emergency cleared. ---")
 
         time.sleep(2)
 
